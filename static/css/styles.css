@@ -1,0 +1,101 @@
+h3, h4, h5{
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.row{
+    padding-top: 70px;
+    margin: 0 auto;
+    width: 35%;
+   }
+
+.row-home{
+    margin: 0 auto;
+    padding-top: 60px;
+
+}
+
+.aling-div-home{
+    text-align: left;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    margin: 20px;
+}
+
+.content-box{
+    align-items: center;
+}
+
+#img-home{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.aling-div{
+  width: 100%;
+}
+
+.list-group{
+    width: 700px;
+} 
+
+.table-aling{
+    border: 10px;
+}
+
+.container-login{
+    padding-top: 80px;
+}
+
+
+#td-alinha{
+    text-align: right;
+}
+
+.fa-trash-alt{
+    color: #b2293e;
+}
+
+.fa-folder-plus{
+    color: #3165fa;
+    /* position: relative;
+    left: -45px; */
+}
+
+.fa-cloud-upload-alt{
+    color: #4dbd75;
+}
+
+.fa-cloud-download-alt{
+    color: #b2293e;
+}
+
+.fa-cubes{
+    color: #f67f61;
+}
+
+#spread-sheets{
+    color: #058ab5;
+}
+
+#id-apps{
+    color: #9bb505;
+}
+
+#id-games{
+    color: #f5c365;
+}
+
+.aling-back{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    float: right;
+}
+
+#send-ajust{
+    margin-left: 35%;
+}
+
+.list-group-item-dowload{
+    text-align: center;
+    width: 100%;
+}

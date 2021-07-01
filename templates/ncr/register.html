@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+<div class="row">
+  <div class="content-box">
+  <h3>Ação não Permitida</h3>
+    <img src="{{ url_for('static', filename='img/acesso-negado.jpg') }}" alt="Intro Site" width=700 height=450 id="img-home">
+  <div class="aling-div">
+      <h4>O Registro Só Realizado Pelo Administrador .</h4>
+      <h4>Favor Entrar em Contato com Adimistrador</h4>
+  </div>
+
+  <div class="aling-back">
+    {% if status == true%}
+        <a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+    {% else %}
+        <a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock content %}

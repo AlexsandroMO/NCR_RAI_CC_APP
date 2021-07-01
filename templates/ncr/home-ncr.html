@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="content-box">
+        <h3 stile="test">Bem Vidos ao Ambiente de Análise RAI/CC_REV</h3>
+            <img src="{{ url_for('static', filename='img/dados_pizza.jpeg') }}" alt="Intro Site" width=700 height=400 id="img-home">
+
+        <div class="aling-div">
+            <ul class="list-group">
+                {% if status == true%}
+                <li class="list-group-item"><a href="/userarea_loged">
+                    <table class="table table-striped">
+                        <tr>
+                            <td><i class="fas fa-folder-plus fa-2x"></i></td>
+                            <td style="text-align: right;"><strong>RAI / CC_REV</strong></td>
+                        </tr>
+                    </table>
+                </a></li>
+                {% else %}
+                <li class="list-group-item"><a href="/login">
+                    <table class="table table-striped">
+                        <tr>
+                            <td><i class="fas fa-folder-plus fa-2x"></i></td>
+                            <td style="text-align: right;"><strong>RAI / CC_REV</strong></td>
+                        </tr>
+                    </table>
+                </a></li>
+                {% endif %}
+                <li class="list-group-item"><a href="/delite_arq">
+                    <table class="table table-striped">
+                        <tr>
+                            <td><i class="fas fa-trash-alt fa-2x"></i></td>
+                            <td style="text-align: right;"><strong>DELETAR PLANILHAS DE BASE</strong></td>
+                        </tr>
+                    </table>
+                </a></li>
+            </ul>
+        </div>
+
+        <div class="aling-back">
+            {% if status == true%}
+                <a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+            {% else %}
+                <a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+      
+{% endblock content %}
+
+
+
+
+
+
+<!-- 
+ -->

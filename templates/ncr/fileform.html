@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div class="row">
+    <div class="content-box">
+    <h3>Importar Documentos de Base</h3>
+    
+    <img src="{{ url_for('static', filename='img/análise-de-dados.jpg') }}" alt="Intro Site" width=700 height=400 id="img-home">
+    <div class="aling-div">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h5>Escolha os Documentos que Serão Importados</h5>
+                    <br>
+                    <form action="/handleUpload" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="file" id="file-ajust" name="photo"/> <!--multiple="multiple"-->
+                            <input type="submit" class="btn btn-secondary" value="Enviar" id="send-ajust"/>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+    </div>
+
+    <div class="aling-back">
+            <a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+      </div>
+      
+</div>
+
+{% endblock content %}
