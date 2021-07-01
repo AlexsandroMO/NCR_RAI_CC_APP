@@ -32,8 +32,15 @@ Var_State.login_acess = False
 @app.route("/home_ncr")
 def home_ncr():
     status = Var_State.login_acess
-    print('Status---------', status)
     title_status = 'Home | NCR'
+    pasta = './static'
+    for diretorio in os.walk(pasta):
+        for arquivo in diretorio[2]:
+            if arquivo == 'INT_DELNT_CRTL_META_REV.xlsx':
+                os.remove('static/INT_DELNT_CRTL_META_REV.xlsx')
+            elif arquivo == 'rai.xlsx':
+                os.remove("static/rai.xlsx")
+
     return render_template('ncr/home-ncr.html', status=status, title_status=title_status)
 
 @app.route("/create")
@@ -65,7 +72,7 @@ def create_table():
     status_files, status_files1, status_files2 = [],[],[]
     for diretorio in os.walk(pasta):
         for arquivo in diretorio[2]:
-            print('-----',arquivo)
+            #print('-----',arquivo)
             if arquivo == 'INT_DELNT_CRTL_META_REV.xlsx':
                 status_files1.append('-')
             elif arquivo == 'rai.xlsx':
@@ -119,8 +126,8 @@ def userarea():
             status = Var_State.login_acess
 
             if status == True:
-                return render_template("ncr/userarea.html", title_status=title_status, title='Python_Flask', status=status,
-                                       name_user=read_register[1].lower().capitalize())
+                return render_template("ncr/userarea.html", title_status=title_status, title='Python_Flask', status=status,name_user=read_register[1].lower().capitalize())
+                
 
             else:
                 return render_template("ncr/login.html", title_status=title_status, email=email)
@@ -130,7 +137,6 @@ def userarea():
 
 @app.route('/delite_arq')
 def delite_arq():
-
     pasta = './static'
     for diretorio in os.walk(pasta):
         for arquivo in diretorio[2]:
@@ -138,8 +144,6 @@ def delite_arq():
                 os.remove('static/INT_DELNT_CRTL_META_REV.xlsx')
             elif arquivo == 'rai.xlsx':
                 os.remove("static/rai.xlsx")
-            elif arquivo == 'NCR_RAI_LIBERAR':
-                os.remove("NCR_RAI_LIBERAR.xlsx")
                 
     return render_template('ncr/home-ncr.html') 
 
@@ -203,3 +207,27 @@ def handleFileUpload():
 if __name__ == '__main__':
     #app.run(host='127.0.0.1', port=8000, debug=True)
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # pasta = './static'
+        # arquivo_meta = 'INT_DELNT_CRTL_META_REV.xlsx'
+        # #arquivo_rai = 'rai.xlsx'
+        # diretorio = os.listdir(pasta)
+        # if arquivo in diretorio:
+        #     print('---removendo arquivo----')
+        #     os.remove('{}/{}'.format(pasta, arquivo_meta))
+        #     print('>>>>>> {} removido da pasta {}'.format(pasta, arquivo_meta))
+        # else:
+        #     print('|||||||||||||||||| este arquivo nao existe')
