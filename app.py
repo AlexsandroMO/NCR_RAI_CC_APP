@@ -35,13 +35,18 @@ def home_ncr():
     title_status = 'Home | NCR'
     pasta = './static'
     for diretorio in os.walk(pasta):
+        print('>>>>>>>>>>>>', diretorio)
         for arquivo in diretorio[2]:
             if arquivo == 'INT_DELNT_CRTL_META_REV.xlsx':
                 os.remove('static/INT_DELNT_CRTL_META_REV.xlsx')
-            elif arquivo == 'rai.xlsx':
-                os.remove("static/rai.xlsx")
+            elif arquivo == 'EXTRATO_RAI.xlsx':
+                os.remove("static/EXTRATO_RAI.xlsx")
+            elif arquivo == 'exportar.xlsx':
+                os.remove("static/exportar.xlsx")
+            elif arquivo == 'NCR_RAI_LIBERAR.xlsx':
+                os.remove("static/NCR_RAI_LIBERAR.xlsx")
 
-    return render_template('ncr/home-ncr.html', status=status, title_status=title_status)
+    return render_template('ncr/home-ncr.html', status=status, title_status=title_status, pasta=pasta)
 
 @app.route("/create")
 def create():
@@ -69,20 +74,25 @@ def login():
 def create_table():
     status = Var_State.login_acess
     pasta = './static'
-    status_files, status_files1, status_files2 = [],[],[]
+    status_files, status_files1, status_files2, status_files3 = [],[],[],[]
     for diretorio in os.walk(pasta):
         for arquivo in diretorio[2]:
-            #print('-----',arquivo)
+            #print('---->>>>>>',arquivo)
             if arquivo == 'INT_DELNT_CRTL_META_REV.xlsx':
                 status_files1.append('-')
-            elif arquivo == 'rai.xlsx':
+            elif arquivo == 'EXTRATO_RAI.xlsx':
                 status_files2.append('-')
+            elif arquivo == 'exportar.xlsx':
+                status_files3.append('-')
 
     if len(status_files1) != 1:
         status_files.append('INT_DELNT_CRTL_META_REV.xlsx')
 
     if len(status_files2) != 1:
-        status_files.append('rai.xlsx')
+        status_files.append('EXTRATO_RAI.xlsx')
+
+    if len(status_files3) != 1:
+        status_files.append('exportar.xlsx')
 
     status_files_len = len(status_files)
     if status_files_len > 0:
@@ -92,15 +102,18 @@ def create_table():
         df = db_ncr.create_list()
         return render_template('ncr/upload.html', msg_df=df[1], status=status, df=df[0], tables=[df[0].to_html(classes='data')], titles=df[0].columns.values)
 
+
 @app.route("/logout")
 def logout():
     Var_State.login_acess = False
     return render_template('ncr/home-ncr.html')
 
+
 @app.route("/download")
 def download():
     status = Var_State.login_acess
     return redirect(url_for('static', filename='NCR_RAI_LIBERAR.xlsx'))
+
 
 @app.route('/userarea', methods=['POST', 'GET'])
 def userarea():
@@ -127,7 +140,6 @@ def userarea():
 
             if status == True:
                 return render_template("ncr/userarea.html", title_status=title_status, title='Python_Flask', status=status,name_user=read_register[1].lower().capitalize())
-                
 
             else:
                 return render_template("ncr/login.html", title_status=title_status, email=email)
@@ -139,11 +151,16 @@ def userarea():
 def delite_arq():
     pasta = './static'
     for diretorio in os.walk(pasta):
+        #print('>>>>>>>>>>>>', diretorio)
         for arquivo in diretorio[2]:
             if arquivo == 'INT_DELNT_CRTL_META_REV.xlsx':
                 os.remove('static/INT_DELNT_CRTL_META_REV.xlsx')
-            elif arquivo == 'rai.xlsx':
-                os.remove("static/rai.xlsx")
+            elif arquivo == 'EXTRATO_RAI.xlsx':
+                os.remove("static/EXTRATO_RAI.xlsx")
+            elif arquivo == 'exportar.xlsx':
+                os.remove("static/exportar.xlsx")
+            elif arquivo == 'NCR_RAI_LIBERAR.xlsx':
+                os.remove("static/NCR_RAI_LIBERAR.xlsx")
                 
     return render_template('ncr/home-ncr.html') 
 
