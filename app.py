@@ -41,8 +41,8 @@ def home_ncr():
                 os.remove('static/INT_DELNT_CRTL_META_REV.xlsx')
             elif arquivo == 'EXTRATO_RAI.xlsx':
                 os.remove("static/EXTRATO_RAI.xlsx")
-            elif arquivo == 'exportar.xlsx':
-                os.remove("static/exportar.xlsx")
+            elif arquivo == 'mask_extratoIMZCOS.xlsx':
+                os.remove("static/mask_extratoIMZCOS.xlsx")
             elif arquivo == 'NCR_RAI_LIBERAR.xlsx':
                 os.remove("static/NCR_RAI_LIBERAR.xlsx")
 
@@ -82,7 +82,7 @@ def create_table():
                 status_files1.append('-')
             elif arquivo == 'EXTRATO_RAI.xlsx':
                 status_files2.append('-')
-            elif arquivo == 'exportar.xlsx':
+            elif arquivo == 'mask_extratoIMZCOS.xlsx':
                 status_files3.append('-')
 
     if len(status_files1) != 1:
@@ -92,7 +92,7 @@ def create_table():
         status_files.append('EXTRATO_RAI.xlsx')
 
     if len(status_files3) != 1:
-        status_files.append('exportar.xlsx')
+        status_files.append('mask_extratoIMZCOS.xlsx')
 
     status_files_len = len(status_files)
     if status_files_len > 0:
@@ -157,8 +157,8 @@ def delite_arq():
                 os.remove('static/INT_DELNT_CRTL_META_REV.xlsx')
             elif arquivo == 'EXTRATO_RAI.xlsx':
                 os.remove("static/EXTRATO_RAI.xlsx")
-            elif arquivo == 'exportar.xlsx':
-                os.remove("static/exportar.xlsx")
+            elif arquivo == 'mask_extratoIMZCOS.xlsx':
+                os.remove("static/mask_extratoIMZCOS.xlsx")
             elif arquivo == 'NCR_RAI_LIBERAR.xlsx':
                 os.remove("static/NCR_RAI_LIBERAR.xlsx")
                 

@@ -45,7 +45,7 @@ def query_email_confere(email, password):
 #==================
 
 def create_list():
-    export = pd.read_excel('static/exportar.xlsx')
+    export = pd.read_excel('static/mask_extratoIMZCOS.xlsx')
     meta = pd.read_excel('static/INT_DELNT_CRTL_META_REV.xlsx')
     extrato = pd.read_excel('static/EXTRATO_RAI.xlsx', 'RAIs')
 
@@ -57,6 +57,13 @@ def create_list():
     meta = meta[meta['CC'] != '-']
     meta = meta[meta['STATUS'] == 'Publicado']
     meta = meta.sort_values(['CC','REV','NCR_RAI','STATUS'], ascending=False)
+
+    old_name = ['Rev  CC  ', 'Numero Caderno','Status']
+    new_name = ['REV_CC','NUMERO_CADERNO','STATUS']
+
+    for i in range(len(old_name)):
+        print(old_name[i], new_name[i])
+        export.rename(columns={old_name[i]:new_name[i]}, inplace=True)
 
     export = export[export['STATUS'] == 'Publicado']
     export = export[['NUMERO_CADERNO','REV_CC','STATUS']]
