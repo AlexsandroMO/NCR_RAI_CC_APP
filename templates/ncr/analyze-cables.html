@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row2">
+  <div class="content-box">
+  <h3>Download de Planilhas</h3>
+  <br>
+  <h4 id="text-decorator">Itens Afetados: {{len_table}}</h4>
+  <div class="aling-div">
+    <br>
+    <br>
+    <div class="results">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" class="column-abase">
+              <div class="text"><span><input type="checkbox" id="action-toggle"></span></div>
+              <div class="clear"></div>
+            </th>
+            <th scope="col" class="column1">
+              <div class="text"><a href="?o=1">IM</a></div>
+              <div class="clear"></div>
+            </th>
+            <th scope="col" class="column2">
+              <div class="text"><a href="?o=2">MODIFICATIONS</a></div>
+              <div class="clear"></div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for table in tables %}
+          <tr>
+            <td class="action-checkbox"><input type="checkbox" name="_selected_action" value=""
+                class="action-select"></td>  <!--nowrap: tirar quebra de texto-->
+            <th class="field-documment_name nowrap"><a href="#">{{table.0}}</a></th>
+            <td class="field-doc_code nowrap">{{table.1}}</td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+
+
+
+   
+
+  <div class="aling-back">
+    {% if status == true%}
+        <a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+    {% else %}
+        <a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock content %}
+

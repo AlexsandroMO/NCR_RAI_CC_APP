@@ -9,11 +9,22 @@ h3, h4, h5{
     width: 35%;
    }
 
+.row2{
+    padding-top: 70px;
+    padding-bottom: 90px;
+    margin: 0 auto;
+    width: 90%;
+   }
+
 .row-home{
     margin: 0 auto;
     padding-top: 60px;
-
 }
+
+.results{
+    padding: 10px;
+}
+
 
 .aling-div-home{
     text-align: left;
@@ -30,6 +41,11 @@ h3, h4, h5{
     padding-top: 10px;
     padding-bottom: 20px;
 }
+
+#text-decorator{
+    text-align: left;
+}
+
 .aling-div{
   width: 100%;
 }
@@ -71,6 +87,10 @@ h3, h4, h5{
 
 .fa-cubes{
     color: #f67f61;
+}
+
+.fa-code-branch{
+    color: #61baf6;
 }
 
 #spread-sheets{

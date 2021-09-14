@@ -17,6 +17,7 @@ import requests
 from datetime import date, datetime
 from tinydb import TinyDB, Query, where
 import random
+import code_cable as cable
 
 
 # ==================================
@@ -161,7 +162,13 @@ def delite_arq():
                 os.remove("static/mask_extratoIMZCOS.xlsx")
             elif arquivo == 'NCR_RAI_LIBERAR.xlsx':
                 os.remove("static/NCR_RAI_LIBERAR.xlsx")
-                
+            elif arquivo == 'exportar.xlsx':
+                os.remove("static/exportar.xlsx")
+            elif arquivo == 'ANEXO-OLD.xls':
+                os.remove("static/ANEXO-OLD.xls")
+            elif arquivo == 'ANEXO-NEW.xls':
+                os.remove("static/ANEXO-NEW.xls")
+  
     return render_template('ncr/home-ncr.html') 
 
 
@@ -219,6 +226,40 @@ def handleFileUpload():
             print('foi')
             photo.save(os.path.join('static/', photo.filename))
     return redirect(url_for('userarea_loged'))
+
+
+@app.route("/analyze_cables")
+def analyze_cables():
+    status = Var_State.login_acess
+
+    pasta = './static'
+    status_files, status_files1, status_files2 = [],[],[]
+    for diretorio in os.walk(pasta):
+        for arquivo in diretorio[2]:
+            #print('---->>>>>>',arquivo)
+            if arquivo == 'ANEXO-OLD.xls':
+                status_files1.append('-')
+            elif arquivo == 'ANEXO-NEW.xls':
+                status_files2.append('-')
+
+    if len(status_files1) != 1:
+        status_files.append('ANEXO-OLD.xls')
+
+    if len(status_files2) != 1:
+        status_files.append('ANEXO-NEW.xls')
+
+    status_files_len = len(status_files)
+    if status_files_len == 1:
+        return render_template('ncr/message-erro-file.html', status_files=status_files, status=status)
+    
+    elif status_files_len == 2:
+        return render_template('ncr/message-erro-file.html', status_files=status_files, status=status)
+
+    else:
+        tables = cable.read_cables()
+        len_table = len(tables)
+        return render_template('ncr/analyze-cables.html', status=status, tables=tables, len_table=len_table) #msg_df=df, status=status, df=df, tables=[df.to_html(classes='data')], titles=df.columns.values)
+        #return render_template('ncr/analyze-cables.html')
 
 
 if __name__ == '__main__':
